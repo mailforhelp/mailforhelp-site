@@ -127,9 +127,27 @@
 
   /* newsletter */
   .newsletter{background:var(--cream)}
+
+  /* Sender.net embedded form — best-effort match to site styling.
+     Sender's own "Design" tab in the form builder is the reliable way
+     to match brand colors; these rules apply only if Sender's widget
+     doesn't isolate its markup from page CSS. */
+  .newsletter-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+  .sender-form-wrap{max-width:480px}
+  .sender-form-field input[type="email"],
+  .sender-form-field input[type="text"]{
+    border:2px solid var(--teal-dark) !important;font-family:'Nunito Sans',system-ui,sans-serif !important;
+  }
+  .sender-form-field button,
+  .sender-form-field input[type="submit"]{
+    background:var(--teal-dark) !important;color:var(--paper) !important;
+    font-family:'Nunito Sans',system-ui,sans-serif !important;font-weight:800 !important;
+    border:none !important;border-radius:2px !important;
+  }
+
   .nform{display:flex;gap:10px;flex-wrap:wrap;max-width:480px}
   .nform input[type=email]{flex:1;min-width:220px;padding:13px 14px;border:2px solid var(--teal-dark);font-size:1rem;font-family:inherit}
-  .disclaimer{font-size:.85rem;color:#444;max-width:560px;margin-top:18px;padding:14px 16px;background:var(--paper);border-style:solid;border-width:8px;border-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAOElEQVR4nGNgGAU0BpOb/zNMbv6PTwkTXs3Y2EQZgE0DDkNwu4BIgN2A3FpGosQIAiICcRRQAQAABhkShyoEpQkAAAAASUVORK5CYII=) 8 round;}
+  .disclaimer{font-size:.85rem;color:#444;margin:0;padding:14px 16px;background:var(--paper);border:2px solid var(--teal-light)}
 
   /* contact */
   .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -145,7 +163,7 @@
     :root:not([data-theme="light"]){ }
   }
   @media (max-width:760px){
-    .about-grid,.help-grid,.donate-list,.contact-grid,.gallery-grid,.map-wrap{grid-template-columns:1fr}
+    .about-grid,.help-grid,.donate-list,.contact-grid,.gallery-grid,.map-wrap,.newsletter-grid{grid-template-columns:1fr}
     .city-cols{columns:2 140px}
     section{padding:44px 0}
   }
@@ -423,12 +441,30 @@
     <p class="kicker">Будьте в курсе</p>
     <h2>Подпишитесь на рассылку</h2>
     <p class="lead">Узнавайте первыми о новых мероприятиях, итогах акций и способах помочь — пара писем в месяц, без спама.</p>
-    <!-- Replace this form's action with your Brevo embedded-form endpoint -->
-    <form class="nform" action="#" method="post">
-      <input type="email" name="email" placeholder="you@example.com" required>
-      <button class="btn btn-primary" type="submit">Подписаться</button>
-    </form>
+    <div class="newsletter-grid">
+    <div class="sender-form-wrap">
+      <div style="text-align: left" class="sender-form-field" data-sender-form-id="dR69qz"></div>
+    </div>
+    <script>
+      (function (s, e, n, d, er) {
+        s['Sender'] = er;
+        s[er] = s[er] || function () {
+          (s[er].q = s[er].q || []).push(arguments)
+        }, s[er].l = 1 * new Date();
+        s[er].on = function(event, callback) {
+          s[er].listeners = s[er].listeners || {};
+          (s[er].listeners[event] = s[er].listeners[event] || []).push(callback);
+        };
+        var a = e.createElement(n),
+            m = e.getElementsByTagName(n)[0];
+        a.async = 1;
+        a.src = d;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
+      sender('6927dbc2aa6415')
+    </script>
     <div class="disclaimer">На данный момент у нашей организации нет статуса «нежелательной организации» или «иностранного агента» в России, а подписка на рассылку в любом случае не считается российскими властями формой поддержки. Но если хотите перестраховаться, советуем использовать почтовый адрес, не оканчивающийся на <strong>.ru</strong>.</div>
+    </div>
   </div>
 </section>
 
