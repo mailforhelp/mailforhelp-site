@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Письма политзаключённым — пишите, помогайте, поддерживайте</title>
-<meta name="description" content="Мы помогвем организовать вечера писем по всему миру и отправляем письма и открытки политзаключённым в России. Приходите на вечер писем, напишите письмо или поддержите проект.">
+<meta name="description" content="Мы помогаем организовать вечера писем по всему миру и отправляем письма и открытки политзаключённым в России. Приходите на вечер писем, напишите письмо или поддержите проект.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
@@ -95,7 +95,8 @@
   .gitem figcaption{font-size:.78rem;padding:8px 10px;color:#333}
 
   /* map */
-  .map-wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center}
+  .map-wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+  @media (min-width:900px){.map-wrap{grid-template-columns:calc(75% - 6px) 1fr}}
   .region{fill:var(--teal-light);stroke:var(--paper);stroke-width:0.6}
   .map-wrap svg{width:100%;height:auto;background:var(--cream)}
   .dot{fill:var(--gold);stroke:var(--teal-dark);stroke-width:1.5}
@@ -116,9 +117,9 @@
   .donate-list li a:hover{background:rgba(255,255,255,.18)}
 
   /* cities */
-  .city-stats{display:flex;flex-direction:column;gap:18px;justify-content:center}
-  .city-stats div b{font-family:'Oswald',sans-serif;font-size:3.2rem;color:var(--teal-dark);display:block}
-  .city-stats div{font-size:1.15rem}
+  .city-stats{display:flex;flex-direction:column;gap:26px;justify-content:center;align-items:center;text-align:center}
+  .city-stats div b{font-family:'Oswald',sans-serif;font-size:4.2rem;line-height:1.05;color:var(--teal-dark);display:block}
+  .city-stats div{font-size:1.35rem}
   .city-cols{columns:4 160px;column-gap:24px;font-size:.92rem}
   .city-cols .country{break-inside:avoid;margin-bottom:14px}
   .city-cols .country b{display:block;color:var(--teal-dark);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px}
@@ -163,6 +164,9 @@
     :root:not([data-theme="light"]){ }
   }
   @media (max-width:760px){
+    .city-stats{flex-direction:row;justify-content:space-around;align-items:flex-start;gap:12px}
+    .city-stats div{flex:1}
+    .city-stats div b{font-size:3rem}
     .about-grid,.help-grid,.donate-list,.contact-grid,.gallery-grid,.map-wrap,.newsletter-grid{grid-template-columns:1fr}
     .city-cols{columns:2 140px}
     section{padding:44px 0}
